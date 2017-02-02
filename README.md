@@ -4,7 +4,23 @@ GCP Billing custom metrics plugin for mackerel.io agent.
 
 ## Requirement
 
+The following schema is required.
+
+- Recommend to use [export billing data to BigQuery](https://support.google.com/cloud/answer/7233314?hl=en&ref_topic=7106112).
+
+|Name|Type|
+|:--|:--|
+|cost|FLOAT|
+|start_time|TIMESTAMP|
+
+And [Application Default Credentials(JSON key)](https://developers.google.com/identity/protocols/application-default-credentials) is required.
+
 ## Example of mackerel-agent.conf
+
+```
+[plugin.metrics.gcp-billing]
+command = "env GOOGLE_APPLICATION_CREDENTIALS=/path/to/JSONKEY.json /path/to/mackerel-plugin-gcp-billing -d DATASET -p PROJECTID -t TABLE"
+```
 
 ## Options
 
